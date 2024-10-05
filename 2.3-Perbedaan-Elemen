@@ -1,0 +1,55 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class DifferentArrayNumber {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Mengeliminasi Angka yang Memiliki Nilai yang Sama");
+
+        // Input baris pertama
+        System.out.print("Baris Pertama : ");
+        String baris1 = scanner.nextLine();
+        // Input baris kedua
+        System.out.print("Baris Kedua : ");
+        String baris2 = scanner.nextLine();
+
+        // Pisahkan angka-angka dalam dua baris input
+        String[] angkaBaris1 = baris1.split(" ");
+        String[] angkaBaris2 = baris2.split(" ");
+
+        // Gunakan Set untuk menyimpan angka-angka agar mudah dicari perbedaannya
+        Set<Integer> setBaris1 = new HashSet<>();
+        Set<Integer> setBaris2 = new HashSet<>();
+
+        // Masukkan angka-angka dari baris pertama ke dalam set
+        for (String angka : angkaBaris1) {
+            setBaris1.add(Integer.parseInt(angka));
+        }
+
+        // Masukkan angka-angka dari baris kedua ke dalam set
+        for (String angka : angkaBaris2) {
+            setBaris2.add(Integer.parseInt(angka));
+        }
+
+        // Set untuk menyimpan angka-angka yang berbeda
+        Set<Integer> angkaBerbeda = new HashSet<>(setBaris1);
+
+        // Hapus semua angka yang ada di setBaris2 dari angkaBerbeda
+        angkaBerbeda.removeAll(setBaris2);
+
+        // Tambahkan angka-angka yang ada di setBaris2 tapi tidak ada di setBaris1
+        for (Integer angka : setBaris2) {
+            if (!setBaris1.contains(angka)) {
+                angkaBerbeda.add(angka);
+            }
+        }
+
+        // Cetak hasil
+        System.out.print("Hasil Eliminasi : ");
+        for (Integer angka : angkaBerbeda) {
+            System.out.print(angka + " ");
+        }
+    }
+}
