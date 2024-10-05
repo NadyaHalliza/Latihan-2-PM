@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class MaxNumber {
+    public static void main(String[] args) {
+        // Membuat scanner untuk input
+        Scanner scanner = new Scanner(System.in);
+
+        // Menerima input dari pengguna
+        System.out.print("Input some integers number that separated by space: ");
+        String input = scanner.nextLine();
+
+        // Memisahkan input berdasarkan spasi dan memasukkan ke array
+        String[] angkaString = input.split(" ");
+
+        // Mengonversi string menjadi integer
+        int[] angka = new int[angkaString.length];
+        for (int i = 0; i < angkaString.length; i++) {
+            angka[i] = Integer.parseInt(angkaString[i]);
+        }
+
+        // Mencari angka terbesar
+        int angkaTerbesar = angka[0];
+        for (int i = 1; i < angka.length; i++) {
+            if (angka[i] > angkaTerbesar) {
+                angkaTerbesar = angka[i];
+            }
+        }
+
+        // Menampilkan angka terbesar
+        System.out.println("Largest Number: " + angkaTerbesar);
+    }
+}
